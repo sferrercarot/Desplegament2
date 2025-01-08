@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Equipos</title>
+    <link rel="stylesheet" href="css/stylesLista.css">
+</head>
+<body>
+<h1>Equipos</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Nombre</th>
+        <th>Ciudad</th>
+        <th>Estadio</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="equipo : ${equipos}">
+        <td>
+            <a th:href="@{'detalles_' + ${equipo.nombre.replace(' ', '_')} + '.html'}">
+                <img th:src="@{'fotos/equipos/' + ${equipo.nombre.replace(' ', '_')} + '.jpg'}"
+                     alt="Imagen de equipo" style="width:50px; height:50px;">
+                <span th:text="${equipo.nombre}"></span>
+            </a>
+        </td>
+        <td th:text="${equipo.ciudad}"></td>
+        <td th:text="${equipo.estadio}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
